@@ -7,7 +7,7 @@
         <!-- logo for regular state and mobile devices -->
         <div class="container logo-lg">
           <div class="pull-left image"><img src="/static/img/logo_sm.png" alt="Logo" class="img-responsive"></div>
-          <div class="pull-left info">CoPilot</div>
+          <div class="pull-left info">泰豪电力</div>
         </div>
       </a>
 
@@ -20,96 +20,7 @@
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
-            <!-- Messages-->
-            <li class="dropdown messages-menu">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-envelope-o"></i>
-                <span class="label label-success">{{ state.userInfo.messages | count }}</span>
-              </a>
-              <ul class="dropdown-menu">
-                <li class="header">You have {{ state.userInfo.messages | count }} messages</li>
-                <li>
-                  <!-- inner menu: contains the messages -->
-                  <ul class="menu">
-                    <li><!-- start message -->
-                      <a href="#">
-                        <!-- Message title and timestamp -->
-                        <h4>
-                          Support Team
-                          <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                        </h4>
-                        <!-- The message -->
-                        <p>Why not buy a new awesome theme?</p>
-                      </a>
-                    </li>
-                    <!-- end message -->
-                  </ul>
-                  <!-- /.menu -->
-                </li>
-                <li class="footer"><a href="#">See All Messages</a></li>
-              </ul>
-            </li>
-            <!-- /.messages-menu -->
-
-            <!-- Notifications Menu -->
-            <li class="dropdown notifications-menu">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-bell-o"></i>
-                <span class="label label-warning">{{ state.userInfo.notifications | count }}</span>
-              </a>
-              <ul class="dropdown-menu">
-                <li class="header">You have {{ state.userInfo.notifications | count }} notifications</li>
-                <li>
-                  <!-- Inner Menu: contains the notifications -->
-                  <ul class="menu">
-                    <li><!-- start notification -->
-                      <a href="#">
-                        <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                      </a>
-                    </li>
-                    <!-- end notification -->
-                  </ul>
-                </li>
-                <li class="footer"><a href="#">View all</a></li>
-              </ul>
-            </li>
-
-            <!-- Tasks Menu -->
-            <li class="dropdown tasks-menu">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-flag-o"></i>
-                <span class="label label-danger">{{ state.userInfo.tasks | count }} </span>
-              </a>
-              <ul class="dropdown-menu">
-                <li class="header">You have {{ state.userInfo.tasks | count }}  tasks</li>
-                <li>
-                  <!-- Inner menu: contains the tasks -->
-                  <ul class="menu">
-                    <li><!-- Task item -->
-                      <a href="#">
-                        <!-- Task title and progress text -->
-                        <h3>
-                          Design some buttons
-                          <small class="pull-right">20%</small>
-                        </h3>
-                        <!-- The progress bar -->
-                        <div class="progress xs">
-                          <!-- Change the css width attribute to simulate progress -->
-                          <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                            <span class="sr-only">20% Complete</span>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <!-- end task item -->
-                  </ul>
-                </li>
-                <li class="footer">
-                  <a href="#">View all tasks</a>
-                </li>
-              </ul>
-            </li>
-
+            
             <!-- User Account Menu -->
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -154,9 +65,59 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-          <li class="header">TOOLS</li>
-          <li class="active pageLink" v-on:click="toggleMenu"><a v-link="{path: '/'}"><i class="fa fa-desktop"></i><span class="page">Dashboard</span></a></li>
-          <li class="pageLink" v-on:click="toggleMenu"><a v-link="{path: '/tables'}"><i class="fa fa-table"></i><span class="page">Tables</span></a></li>
+          <li class="header">控制板</li>
+<!--           <li class="active pageLink" v-on:click="toggleMenu"><a v-link="{path: '/'}"><i class="fa fa-desktop"></i><span class="page">信息</span></a></li> -->
+
+        <li class="treeview">
+          <a href="">
+            <i class="fa fa-server"></i>
+            <span>数据导入</span>
+          </a>
+
+          <ul class="treeview-menu">
+            <li class="active pageLink" v-on:click="toggleMenu"><a v-link="{path: '/'}"><i class="fa fa-desktop"></i><span class="page">TXT</span></a></li>
+            <li class="active pageLink" v-on:click="toggleMenu"><a v-link="{path: '/'}"><i class="fa fa-desktop"></i><span class="page">EXCEL</span></a></li>
+            <li class="active pageLink" v-on:click="toggleMenu"><a v-link="{path: '/'}"><i class="fa fa-desktop"></i><span class="page">DB</span></a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="">
+            <i class="fa fa-server"></i>
+            <span>预处理</span>
+          </a>
+
+          <ul class="treeview-menu">
+            <li class="active pageLink" v-on:click="toggleMenu"><a v-link="{path: '/'}"><i class="fa fa-desktop"></i><span class="page">数据清洗</span></a></li>
+            <li class="active pageLink" v-on:click="toggleMenu"><a v-link="{path: '/'}"><i class="fa fa-desktop"></i><span class="page">数据清洗</span></a></li>
+            <li class="active pageLink" v-on:click="toggleMenu"><a v-link="{path: '/'}"><i class="fa fa-desktop"></i><span class="page">数据清洗</span></a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="">
+            <i class="fa fa-server"></i>
+            <span>算法</span>
+          </a>
+
+          <ul class="treeview-menu">
+            <li class="active pageLink" v-on:click="toggleMenu"><a v-link="{path: '/'}"><i class="fa fa-desktop"></i><span class="page">分类</span></a></li>
+            <li class="active pageLink" v-on:click="toggleMenu"><a v-link="{path: '/'}"><i class="fa fa-desktop"></i><span class="page">聚类</span></a></li>
+            <li class="active pageLink" v-on:click="toggleMenu"><a v-link="{path: '/'}"><i class="fa fa-desktop"></i><span class="page">模型应用</span></a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="">
+            <i class="fa fa-server"></i>
+            <span>验证</span>
+          </a>
+
+          <ul class="treeview-menu">
+            <li class="active pageLink" v-on:click="toggleMenu"><a v-link="{path: '/'}"><i class="fa fa-desktop"></i><span class="page">交叉验证</span></a></li>
+          </ul>
+        </li>
+<!--           <li class="pageLink" v-on:click="toggleMenu"><a v-link="{path: '/tables'}"><i class="fa fa-table"></i><span class="page">Tables</span></a></li>
 
           <li class="header">ME</li>
           <li class="pageLink" v-on:click="toggleMenu"><a v-link="{path: '/tasks'}"><i class="fa fa-tasks"></i><span class="page">Tasks</span></a></li>
@@ -169,7 +130,7 @@
 
           <li class="header">PAGES</li>
           <li class="pageLink" v-on:click="toggleMenu"><a v-link="{path: '/login'}"><i class="fa fa-circle-o text-yellow"></i> <span class="page">Login</span></a></li>
-          <li class="pageLink" v-on:click="toggleMenu"><a v-link="{path: '/404'}"><i class="fa fa-circle-o text-red"></i> <span class="page">404</span></a></li>
+          <li class="pageLink" v-on:click="toggleMenu"><a v-link="{path: '/404'}"><i class="fa fa-circle-o text-red"></i> <span class="page">404</span></a></li> -->
         </ul>
         <!-- /.sidebar-menu -->
       </section>
@@ -179,7 +140,7 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
-      <section class="content-header">
+<!--       <section class="content-header">
         <h1>
           {{$route.name | uppercase }}
           <small>{{ $route.description }}</small>
@@ -188,16 +149,16 @@
           <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
           <li class="active">{{$route.name | uppercase }}</li>
         </ol>
-      </section>
+      </section> -->
 
       <router-view></router-view>
     </div>
     <!-- /.content-wrapper -->
 
     <!-- Main Footer -->
-    <footer class="main-footer">
+<!--     <footer class="main-footer">
       <strong>Copyright &copy; {{year}} <a href="#">CoPilot</a>.</strong> All rights reserved.
-    </footer>
+    </footer> -->
   </div>
   <!-- ./wrapper -->
 </template>
@@ -261,5 +222,8 @@ module.exports = {
 <style>
 .user-panel {
   height: 4em;
+}
+.navbar , .logo{
+  background-color: #007a77 !important;
 }
 </style>

@@ -3,12 +3,34 @@
   <section class='content'>
     <!-- Info boxes -->
     <div class='row'>
-      
+      <div class="shu">
+        <div class="col-md-10 main-shu" id="gouzao">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="col-md-2 right-shu" id="canshu">
+          <p>canshu</p>
+        </div>
+      </div>
+      <div class="err-shu col-md-12">
+        <p>error</p>
+      </div>
     </div>
     <!-- /.row -->
   </section>
   <!-- /.content -->
 </template>
+
+<<style>
+.main-shu,.right-shu {
+  border: 1px solid #312213;
+  height: 500px;
+}
+</style>
 
 <script>
 import Chart from 'chart.js'

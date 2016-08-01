@@ -4,7 +4,7 @@
     <!-- Info boxes -->
     <div class='row'>
       <div class="shu">
-        <div class="col-md-10 main-shu" id="gouzao">
+        <div class="col-md-9 main-shu" id="gouzao">
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
           quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -29,6 +29,7 @@
 .main-shu,.right-shu {
   border: 1px solid #312213;
   height: 500px;
+  margin-right: 10px;
 }
 </style>
 

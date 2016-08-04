@@ -114,4 +114,11 @@ module.exports = {
   ready: function () {
   }
 }
+var container = document.getElementById("graphContainer");
+container.style.background = 'url(/static/src/images/window.gif )';
+var graph = new mxGraph(container);
+var parent = graph.getDefaultParent();
+// 画方块
+graph.insertVertex(parent, null, 'Hello', 50, 50, 80, 30);
+
 </script>

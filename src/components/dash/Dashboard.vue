@@ -94,31 +94,24 @@
   <!-- /.content -->
 </template>
 
-<<style>
-/* .main-shu {
-  height: 500px;
-}
-.right-shu {
-  height: 500px;
-}
-.err-shu {
-  margin-top: 10px;
-} */
+<style>
 .box-header a {
   color: #007a77;
 }
 </style>
 
 <script>
+import mxGraph from '/static/src/js/mxClient.js'
 module.exports = {
   ready: function () {
+    console.log(mxGraph)
+    var container = document.getElementById('graphContainer')
+    container.style.background = 'url(../../../static/src/images/window.gif )'
+    var graph = new mxGraph(container)
+    var parent = graph.getDefaultParent()
+    // 画方块
+    graph.insertVertex(parent, null, 'Hello', 50, 50, 80, 30)
+    graph.insertVertex(parent, null, 'World', 200, 50, 80, 30)
   }
 }
-var container = document.getElementById("graphContainer");
-container.style.background = 'url(/static/src/images/window.gif )';
-var graph = new mxGraph(container);
-var parent = graph.getDefaultParent();
-// 画方块
-graph.insertVertex(parent, null, 'Hello', 50, 50, 80, 30);
-
 </script>

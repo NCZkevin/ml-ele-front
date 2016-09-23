@@ -195,7 +195,7 @@ $('#sidebar li').click(function() {
         var height = randint(50, 100);
         var x = randint(0, 200 - width);
         var y = randint(0, 200 - height);
-        graph.insertVertex(graph.getDefaultParent(), null, name,x, y, 50, 50, style);
+        graph.insertVertex(graph.getDefaultParent(), null, name,x, y, 80, 80, style);
     }
 
 });    

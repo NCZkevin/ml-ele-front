@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+
+<html lang="en">
+	<!--<![endif]-->
+    <!-- BEGIN HEAD -->
+	<head>
+		<meta charset="utf-8" />
+        <title>首页</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta content="" name="description" />
+        <meta content="" name="author" />
+		
+	    <link rel="stylesheet" href="./static/css/bootstrap.min.css">
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+	    <link rel="stylesheet" href="./static/css/AdminLTE.min.css">
+	    <link rel="stylesheet" href="./static/css/skin-blue.min.css">
+	    <link rel="stylesheet" href="./static/js/plugins/pace/pace.min.css">
+	    <link rel="stylesheet"  href="css/mystyle.css">
+	    <script type="text/javascript">
+	    mxBasePath = './static/src';
+	    </script>
+	    <script src="./static/js/mxClient.js"></script>
+		<script type="text/javascript">
+		
+		
+			function chooseNewDataFn(obj) {
+				var chooseNewDataObj = document.getElementById("chooseNewData");
+				console.log(chooseNewDataObj);
+				if (obj.checked == false) {
+					chooseNewDataObj.style.display = "none";
+				}else{
+					chooseNewDataObj.style.display = "";
+				}
+			}
+		
+		
+			function main(container,tbContainer){
+				// Checks if the browser is supported
+				if (!mxClient.isBrowserSupported()){
+					// Displays an error message if the browser is not supported.
+					mxUtils.error('Browser is not supported!', 200, false);
+				}else{
+					mxConnectionHandler.prototype.connectImage = new mxImage('img/connector.gif', 16, 16);
+					// Creates the graph inside the given container
+					
+					var graph = new mxGraph(container);
+					var toolbar = new mxToolbar(tbContainer);
+					toolbar.enabled = false
+					
+					// 禁止网页自带右键菜单Disables built-in context menu
+					mxEvent.disableContextMenu(container);
+
+					// Enables new connections in the graph
+					graph.setConnectable(true);
+					graph.setMultigraph(false);
+					
+					graph.setPanning(true);
+					graph.setTooltips(true);
+
+					// Stops editing on enter or escape keypress
+					var keyHandler = new mxKeyHandler(graph);
+					var rubberband = new mxRubberband(graph);
+					
+					// Automatically handle parallel edges
+					var layout = new mxParallelEdgeLayout(graph);
+					var layoutMgr = new mxLayoutManager(graph);
+					
+					//工具栏
+					var addVertex = function(icon, w, h,style){						
+						var vertex = new mxCell(null, new mxGeometry(0, 0, w, h), style);
+						vertex.setVertex(true);	
+						addToolbarItem(graph, toolbar, vertex, icon);						
+					};
+					
+					//定制图标图片
+					var style = new Object();
+					style[mxConstants.STYLE_SHAPE] = mxConstants.SHAPE_IMAGE;
+					style[mxConstants.STYLE_IMAGE] = 'img/txt.png';
+					style[mxConstants.STYLE_FONTCOLOR] = '#ff000000';
+					graph.getStylesheet().putCellStyle('TXT', style);					
+										
+					style = mxUtils.clone(style);
+					style[mxConstants.STYLE_SHAPE] = mxConstants.SHAPE_IMAGE;
+					style[mxConstants.STYLE_IMAGE] = 'img/excel.png';
+					style[mxConstants.STYLE_FONTCOLOR] = '#FFFFFF';
+					graph.getStylesheet().putCellStyle('EXCEL', style);
+					
+					style = mxUtils.clone(style);
+					style[mxConstants.STYLE_SHAPE] = mxConstants.SHAPE_IMAGE;
+					style[mxConstants.STYLE_IMAGE] = 'img/DB.png';
+					style[mxConstants.STYLE_FONTCOLOR] = '#FFFFFF';
+					graph.getStylesheet().putCellStyle('DB', style);
+					
+					style = mxUtils.clone(style);
+					style[mxConstants.STYLE_SHAPE] = mxConstants.SHAPE_IMAGE;
+					style[mxConstants.STYLE_IMAGE] = 'img/DB.png';
+					style[mxConstants.STYLE_FONTCOLOR] = '#FFFFFF';
+					graph.getStylesheet().putCellStyle('Impute', style);
+					
+					style = mxUtils.clone(style);
+					style[mxConstants.STYLE_SHAPE] = mxConstants.SHAPE_IMAGE;
+					style[mxConstants.STYLE_IMAGE] = 'img/DB.png';
+					style[mxConstants.STYLE_FONTCOLOR] = '#FFFFFF';
+					graph.getStylesheet().putCellStyle('DT', style);
+					
+					style = mxUtils.clone(style);
+					style[mxConstants.STYLE_SHAPE] = mxConstants.SHAPE_IMAGE;
+					style[mxConstants.STYLE_IMAGE] = 'img/DB.png';
+					style[mxConstants.STYLE_FONTCOLOR] = '#FFFFFF';
+					graph.getStylesheet().putCellStyle('KMeans', style);
+					
+					style = mxUtils.clone(style);
+					style[mxConstants.STYLE_SHAPE] = mxConstants.SHAPE_IMAGE;
+					style[mxConstants.STYLE_IMAGE] = 'img/DB.png';
+					style[mxConstants.STYLE_FONTCOLOR] = '#FFFFFF';
+					graph.getStylesheet().putCellStyle('ApplyModel', style);
+					
+					style = mxUtils.clone(style);
+					style[mxConstants.STYLE_SHAPE] = mxConstants.SHAPE_IMAGE;
+					style[mxConstants.STYLE_IMAGE] = 'img/DB.png';
+					style[mxConstants.STYLE_FONTCOLOR] = '#FFFFFF';
+					graph.getStylesheet().putCellStyle('X-Validation', style);
+					
+					
+					addVertex(document.getElementById('TXT'), 80, 80, 'TXT');
+					addVertex(document.getElementById('EXCEL'), 80, 80, 'EXCEL');
+					addVertex(document.getElementById('DB'), 80, 80, 'DB');
+					addVertex(document.getElementById('Impute'), 80, 80, 'Impute');
+					addVertex(document.getElementById('DT'), 80, 80, 'DT');
+					addVertex(document.getElementById('KMeans'), 80, 80, 'KMeans');
+					addVertex(document.getElementById('ApplyModel'), 80, 80,'ApplyModel');
+					addVertex(document.getElementById('X-Validation'), 80, 80,'X-Validation');
+			
+					
+					layoutMgr.getLayout = function(cell){
+						if (cell.getChildCount() > 0){
+							return layout;
+						}
+					};
+					
+					graph.getTooltipForCell = function(cell){
+						if(cell.style == 'TXT'){
+							return cell.value;
+						}
+					}
+					
+					// 定制右键Installs a popupmenu handler using local function (see below).
+					graph.panningHandler.factoryMethod = function(menu, cell, evt){
+						return createPopupMenu(graph, menu, cell, evt);
+					};
+					
+									
+					
+					graph.getSelectionModel().addListener(mxEvent.CHANGE, function(sender, evt){
+						selectionChanged(graph);
+					});
+
+					selectionChanged(graph);
+					
+					
+				
+					
+					
+					
+				}
+			};
+			
+			function addToolbarItem(graph, toolbar, prototype, image){
+				//alert('addToolbarItem');
+				// Function that is executed when the image is dropped on
+				// the graph. The cell argument points to the cell under
+				// the mousepointer if there is one.
+				
+				var funct = function(graph, evt, cell, x, y){
+					
+					graph.stopEditing(false);
+					var vertex = graph.getModel().cloneCell(prototype);	
+					switch(vertex.style){
+						case 'TXT': {
+							
+							var doc = mxUtils.createXmlDocument();
+							var node = doc.createElement('TXTNode');
+							node.setAttribute('filename', '');
+							vertex.value = node;
+						}
+					}
+					
+					
+										
+					vertex.geometry.x = x;
+					vertex.geometry.y = y;
+						
+					var v1 = graph.addCell(vertex);
+					graph.setSelectionCell(vertex);
+					
+					
+				}
+				
+				// Creates the image which is used as the drag icon (preview)
+				
+				
+				// Disables dragging if element is disabled. This is a workaround
+				// for wrong event order in IE. Following is a dummy listener that
+				// is invoked as the last listener in IE.
+				mxEvent.addListener(image, 'mousedown', function(evt){
+					// do nothing
+				});
+				
+				// This listener is always called first before any other listener
+				// in all browsers.
+				mxEvent.addListener(image, 'mousedown', function(evt){
+					if (image.enabled == false){
+						mxEvent.consume(evt);
+					}
+				});
+							
+				mxUtils.makeDraggable(image, graph, funct);
+				
+				return image;
+			}
+
+
+			function createPopupMenu(graph, menu, cell, evt){
+				if (cell != null){
+					
+					if(cell.style == null){
+						menu.addItem('删除', 'img/delete2.png', function(){
+							graph.removeCells([cell]);
+						});
+					}else{
+						if(graph.getSelectionCount() == 1){
+							if(cell.style == 'TXT' || cell.style == 'EXCEL' || cell.style == 'DB'){
+								menu.addItem('删除', 'img/delete2.png', function(){
+									var cells = graph.getSelectionCells();
+									graph.removeCells(cells);
+								});
+								menu.addItem('复制', 'img/copy.png', function(){
+									var s = graph.gridSize;
+									graph.setSelectionCells(graph.moveCells([this.cell], s, s, true));
+								});
+								menu.addItem('编辑', 'img/plus.png', function(){
+									
+									mxUtils.popup(null, true);
+								});
+								menu.addItem('执行', 'img/check.png', function(){
+								
+									var executeCells = new ArrayList();
+									getIncomingCells(graph,cell,executeCells);
+									console.log(executeCells);
+									
+									for (var i = 0 ; i < executeCells.size() - 1; i++ ) { 
+										for (var j = executeCells.size() - 1; j > i; j-- ) { 
+											if (executeCells.get(j).id == executeCells.get(i).id) { 
+												executeCells.remove(j); 
+											} 
+										} 
+									} 
+									console.log(executeCells);
+									
+								});
+							}else{
+								menu.addItem('删除', 'img/delete2.png', function(){
+									var cells = graph.getSelectionCells();
+									graph.removeCells(cells);
+								});
+								menu.addItem('执行', 'img/check.png', function(){
+									mxUtils.alert('MenuItem3: '+graph.getSelectionCount()+' selected');
+									alert('程序执行中')
+								});
+							}
+					
+						}else{
+							menu.addItem('删除', 'img/delete2.png', function(){
+								var cells = graph.getSelectionCells();
+								graph.removeCells(cells);
+							});
+						}
+						
+					}
+				}else{
+					menu.addItem('保存', 'editors/img/saveas.gif', function(){
+						var enc = new mxCodec();
+						var result = enc.encode(graph.getModel());
+						var data = mxUtils.getPrettyXml(result);
+						console.log(data);
+						
+					});
+				}
+				
+			};
+			
+			
+			function selectionChanged(graph){
+				var div = document.getElementById('properties');
+				var mainRegionDiv = '<div id="mainRegion" style="height:400px"> 参数设置区域</div>';
+				var TXTRegionDiv = '<div id="TXTRegion" style="height:400px">'+
+										'<label class="control-label">文件名称</label>'+
+										'<div class="input-group">'+
+                                            '<span class="input-group-addon">'+
+                                                '<i class="fa fa-user"></i>'+
+                                            '</span>'+
+                                            '<input type="text" id="filename" name="filename" class="form-control" /> '+
+										'</div>'+
+									'</div>';
+				
+				var uploadFileDiv = '<input id="newDataFile" type="checkbox" class="checkboxes" checked="" onClick="chooseNewDataFn(this)">上传新数据集'+
+									'<div id="chooseNewData" style="display:">'+										
+										'<div class="col-md-offset-1 col-md-11 form-group"  >'+							                  '<label for="exampleInputFile">文件上传'+'</label>'+
+                  '<input type="file" id="exampleInputFile">'+
+
+											// '<div class="fileinput fileinput-new" data-provides="fileinput">'+
+											// 	'<span class="btn  btn-file">'+
+											// 		'<span class="fileinput-new btn btn-primary" >选择文件</span>'+
+											// 		'<input id="exampleInputFile" type="file" name="file"> </span>'+
+											// 	'<span class="fileinput-filename"> </span> &nbsp;'+
+											// 	'<a href="javascript:;" class="close fileinput-exists" data-dismiss="fileinput"> </a>'+
+											// '</div>'+
+										'</div>'+
+										'<div class="row">'+
+											'<div class="col-md-offset-8 col-md-4">'+
+												'<input class="btn btn-primary" type="submit" value="上传" />'+
+											'</div>'+
+										'</div>'+
+								    '</div>'+
+									'<input id="InstanceDataFile" type="checkbox" class="mt-checkbox" onClick="chooseInstanceDataFn(this)">示例数据集'+
+									'<div id="chooseInstanceData">'+
+										
+									'</div>'+
+									'<input id="PersonDataFile" type="checkbox" class="mt-checkbox" onClick="choosePersonDataFn(this)">个人数据集'+
+									'<div id="choosePersonData">'+
+										
+									'</div>';
+				var dtDiv = '<div class="form-group">'+
+                  '<label for="exampleInputEmail1">数据源</label>' +
+                  '<input type="email" class="form-control" id="exampleInputEmail1" placeholder="">'+
+                '</div>'+
+                '<div class="form-group">'+
+                  '<label for="exampleInputPassword1">数据格式</label>'+
+                  '<input type="password" class="form-control" id="exampleInputPassword1" placeholder="">'+
+                '</div>';
+									
+								
+
+				// Forces focusout in IE
+				graph.container.focus();
+
+				// Clears the DIV the non-DOM way
+				div.innerHTML = '';
+
+				// Gets the selection cell
+				var cell = graph.getSelectionCell();
+				
+				
+
+				if (cell == null){
+					div.innerHTML = mainRegionDiv;
+				}else{	
+					console.log(cell);
+					var cellStyle = cell.style;
+					switch(cellStyle){
+						case 'DT':{
+							div.innerHTML = dtDiv;
+						}
+						case 'TXT':{
+							div.innerHTML = uploadFileDiv;
+							//var attrs = cell.value.attributes;	
+							//for (var i = 0; i < attrs.length; i++){
+								//var input = document.getElementById(attrs[i].nodeName);
+								//cellAttributesChanged(graph, cell, attrs[i], input);//输入类型的属性值变化
+								//document.getElementById(attrs[i].nodeName).value = cell.getAttribute(attrs[i].nodeName);
+							//}
+							
+						}
+						case 'EXCEL':{
+							div.innerHTML = uploadFileDiv;	
+						}
+						case 'DB':{
+							div.innerHTML = uploadFileDiv;	
+						}
+
+					}
+					
+				}
+			}
+			
+			function cellAttributesChanged(graph,  cell, attribute,input){
+				var applyHandler = function(){
+					
+					var newValue = input.value || '';
+					var oldValue = cell.getAttribute(attribute.nodeName, '');
+
+					if (newValue != oldValue){
+						graph.getModel().beginUpdate();
+                        
+                        try{
+                        	var edit = new mxCellAttributeChange(
+ 		                           cell, attribute.nodeName,newValue);
+                           	graph.getModel().execute(edit);
+                           //graph.updateCellSize(cell);
+                        }finally{
+                            graph.getModel().endUpdate();
+                        }
+					}
+				}; 
+
+				mxEvent.addListener(input, 'keypress', function (evt){
+					// Needs to take shift into account for textareas
+					if (evt.keyCode == /*enter*/13 && !mxEvent.isShiftDown(evt)){
+						input.blur();
+					}
+				});
+
+				if (mxClient.IS_IE){
+					mxEvent.addListener(input, 'focusout', applyHandler);
+				}else{
+					// Note: Known problem is the blurring of fields in
+					// Firefox by changing the selection, in which case
+					// no event is fired in FF and the change is lost.
+					// As a workaround you should use a local variable
+					// that stores the focused field and invoke blur
+					// explicitely where we do the graph.focus above.
+					mxEvent.addListener(input, 'blur', applyHandler);
+				}
+			}
+		
+		
+			function getIncomingCells(graph,cell,executeCells){
+				var incomingEdgesOfCurrentCell = graph.getIncomingEdges(cell);
+				var incomingEdgesLength = incomingEdgesOfCurrentCell.length;
+				var incomingCells = new Array();
+				if(incomingEdgesLength == 0){
+					executeCells.add(cell);	
+				}else{
+					for(var i = 0; i < incomingEdgesLength; i++){
+						executeCells.add(cell);	
+						incomingCells[i] = incomingEdgesOfCurrentCell[i].source;
+						getIncomingCells(graph,incomingCells[i],executeCells);
+					}
+				}				
+			}
+			
+			
+		</script>
+			
+
+	</head>
+    <!-- END HEAD -->
+	
+	<body class="hold-transition skin-blue sidebar-mini" onload="main(document.getElementById('graphContainer'),document.getElementById('tbContainer'))">
+		<!-- BEGIN HEADER -->
+		<header class="main-header">
+            <a href="/" class="logo">
+                <!-- mini logo for sidebar mini 40x50 pixels -->
+                <span class="logo-mini"><img src="./static/img/logo_sm.png" alt="Logo" class="img-responsive center-block"></span>
+                <!-- logo for regular state and mobile devices -->
+                <div class="container logo-lg">
+                    <div class="pull-left image"><img src="./static/img/logo_sm.png" alt="Logo" class="img-responsive"></div>
+                    <div class="pull-left info">泰豪电力</div>
+                </div>
+            </a>
+            <!-- Header Navbar -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <!-- Navbar Right Menu -->
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account Menu -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <!-- The user image in the navbar-->
+                               <!--  <img  class="user-image" alt="User Image"> -->
+                                <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                                <span class="hidden-xs"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- END HEADER -->
+		
+		<!-- BEGIN HEADER & CONTENT DIVIDER -->
+        <div class="clearfix"> </div>
+        <!-- END HEADER & CONTENT DIVIDER -->
+		
+		<!-- BEGIN CONTAINER -->		
+        <div class="main-sidebar">
+            <!-- BEGIN SIDEBAR -->
+            <div class="page-sidebar-wrapper">
+                <!-- BEGIN SIDEBAR -->
+                <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+                <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+                <div id="tbContainer" class="sidebar">
+				<!-- BEGIN SIDEBAR MENU -->
+                    <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+                    <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+                    <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+                    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+                    <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+                    <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+                    <ul class="sidebar-menu" id="sidebar" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
+						
+						
+						
+						<li class="treeview">
+                            <a href="">
+                                <i class="fa fa-server"></i>
+                                <span class="title">数据导入</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="nav-item">									
+                                    <a class="nav-link ">
+                                        <i class="fa fa-file-text-o"></i>
+                                        <span class="title" id="TXT"  >TXT</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item  ">
+                                    <a href="javascript:;" class="nav-link ">
+                                        <i class="fa fa-file-excel-o"></i>
+                                        <span class="title" id="EXCEL">EXCEL</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item  ">
+                                    <a href="javascript:;" class="nav-link ">
+                                        <i class="fa fa-file-code-o"></i>
+                                        <span class="title" id="DB">DB</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+						<li class="treeview">
+                            <a href="" class="nav-link nav-toggle">
+                                <i class="fa fa-server"></i>
+                                <span class="title">预处理</span>
+                                <span class="arrow "></span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="nav-item">
+                                    <a href="" class="nav-link nav-toggle">
+                                        <i class="fa fa-circle-o"></i> 数据清洗
+                                        <span class="arrow"></span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        
+                                        <li class="nav-item">
+                                            <a href="" class="nav-link">
+                                                <i class="fa fa-circle-o"></i> <span class="title" id="Impute">缺失值填充</span></a>
+                                        </li>
+                                        
+                                    </ul>
+                                </li>
+                                    
+                            </ul>
+                        </li>
+						<li class="treeview">
+                            <a href="" class="nav-link nav-toggle">
+                                <i class="fa fa-server"></i>
+                                <span class="title">算法</span>
+                                <span class="arrow "></span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="nav-item">
+                                    <a href="" class="nav-link nav-toggle">
+                                        <i class="fa fa-circle-o"></i> 分类
+                                        <span class="arrow"></span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        
+                                        <li class="nav-item">
+                                            <a href="" class="nav-link">
+                                                <i class="fa fa-circle-o"></i> <span class="title" id="DT">决策树</span></a>
+                                        </li>
+                                        
+                                    </ul>
+                                </li>
+								<li class="nav-item">
+                                    <a href="" class="nav-link nav-toggle">
+                                        <i class="fa fa-circle-o"></i> 聚类
+                                        <span class="arrow"></span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        
+                                        <li class="nav-item">
+                                            <a href="" class="nav-link">
+                                                <i class="fa fa-circle-o"></i> <span class="title" id="KMeans">K均值</span></a>
+                                        </li>
+                                        
+                                    </ul>
+                                </li>
+								<li class="nav-item">
+                                    <a href="javascript:;" class="nav-link nav-toggle">
+                                        <i class="fa fa-circle-o"></i> 模型应用
+                                        <span class="arrow"></span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        
+                                        <li class="nav-item">
+                                            <a href="javascript:;" class="nav-link">
+                                                <i class="fa fa-circle-o"></i> <span class="title" id="ApplyModel">模型应用</span></a>
+                                        </li>
+                                        
+                                    </ul>
+                                </li>
+                                
+                            </ul>
+                        </li>
+						<li class="treeview">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="fa fa-server"></i>
+                                <span class="title">验证</span>
+                                <span class="arrow "></span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="nav-item">
+                                    <a href="javascript:;" class="nav-link nav-toggle">
+                                        <i class="fa fa-circle-o"></i> <span class="title" id="X-Validation">交叉验证</span>
+                                       
+                                    </a>
+                                    
+                                </li>
+                                    
+                            </ul>
+                        </li>
+					</ul>
+				</div>
+				<!-- END SIDEBAR MENU -->
+			</div>
+		</div>
+			<!-- END SIDEBAR -->
+			
+			<!-- BEGIN CONTENT -->
+			<div class="content-wrapper">
+				<!-- BEGIN CONTENT BODY -->
+				<div class="content">
+					<div class="row">
+					   <div class="col-md-12">
+                            <div class="box">
+                                <div class="box-body" id="buttonlist">
+                                    <button id="addnew" class="btn btn-default">新建</button>
+                                    <button id="open" class="btn btn-default">打开</button>
+                                    <button id="save" class="btn btn-default">保存</button>
+                                    <button id="publish" class="btn btn-default">执行</button>
+                                </div>
+                            </div>
+                        </div>
+						<div class="col-md-9 col-sm-9">
+							<div class="box box-success">
+								<div class="box-header with-border">
+									<div class="box-title">
+										<i class="icon-social-dribbble font-purple-soft"></i>
+										<span class="caption-subject font-purple-soft bold uppercase">流程构造区</span>
+									</div>
+										
+								</div>
+								<div class="box-body">
+									<div id="graphContainer" class="scroller" style="height:400px" data-rail-visible="1" data-rail-color="yellow" data-handle-color="#a1b2bd">
+										
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-3">
+							<div class="box box-success">
+									<div class="box-header with-border">
+										<div class="box-title">
+											<i class="icon-social-dribbble font-purple-soft"></i>
+											<span class="caption-subject font-purple-soft bold uppercase">相关参数设置区</span>
+										</div>
+										
+									</div>
+									<div  class="box-body">
+										<div id="properties" class="scroller" style="height:400px" data-rail-visible="1" data-rail-color="yellow" data-handle-color="#a1b2bd">
+											
+											
+										</div>
+										
+									</div>
+								</div>
+						
+						</div>						
+					</div>
+					
+					<div class="row">
+                        <div class="err-shu col-md-12">
+                            <div class="box box-success">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">错误提示</h3>
+                                    <div class="box-tools pull-right">
+                                        <!-- Buttons, labels, and many other things can be placed here! -->
+                                        <!-- Here is a label for example -->
+                                        <!-- <span class="label label-primary">Label</span> -->
+                                    </div>
+                                    <!-- /.box-tools -->
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <div class="main-err">
+                                        <div class="scroller" style="height:200px" data-rail-visible="1" data-rail-color="yellow" data-handle-color="#a1b2bd">
+                                            <h4>步骤一错误</h4>
+                                            <p>参数不正确</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- /.box -->
+                        </div>
+						</div>
+					
+				</div>
+				<!-- END CONTENT BODY -->
+			</div>
+				<!-- END CONTENT -->
+		
+		<!-- END CONTAINER -->
+		
+		
+		
+		
+		
+		<!--[if lt IE 9]>
+		<script src="../assets/global/plugins/respond.min.js"></script>
+		<script src="../assets/global/plugins/excanvas.min.js"></script> 
+		<![endif]-->
+        <!-- BEGIN CORE PLUGINS -->
+		<script src="./static/js/plugins/jQuery/jQuery-2.2.0.min.js"></script>
+        <script src="./static/js/plugins/bootstrap/bootstrap.min.js"></script>
+        <script src="./static/js/plugins/AdminLTE/app.min.js"></script>
+        <script src="./static/js/plugins/pace/pace.min.js"></script>
+        <script src="./static/js/copilot.js"></script>
+<!--         <script src="./js/taihao.js"></script>    
+ -->		
+		  
+	</body>
+	
+	
+	
+</html>

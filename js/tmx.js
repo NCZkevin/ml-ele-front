@@ -422,7 +422,7 @@ function uploadFile() {
           	  // var num = data.indexOf("/");
           	  // data = 
           	  localStorage.filename = data;
-              alert(data);
+              alert("上传成功，数据已保存");
           },  
           error: function (returndata) {  
               alert(returndata);  

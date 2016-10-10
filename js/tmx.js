@@ -241,7 +241,29 @@ function createPopupMenu(graph, menu, cell, evt){
 					menu.addItem('执行', 'img/check.png', function(){
 						// mxUtils.alert('MenuItem3: '+graph.getSelectionCount()+' selected');
 						// alert('程序执行中')
-						$('#proModal').modal('show')
+						$('#proModal').modal('show');
+						// getstate();
+				        $.ajax({
+				            url: "http://127.0.0.1:5000/compute",
+				            method: "POST",
+				            data: JSON.stringify({
+				              "trainData":"txtfiles/tree_lenses.txt",
+				              "Alg":"ID3", // 先写ID3
+				              "param":{
+				                "ignore":[1],//忽略的属性， 全要就不写
+				                "decision":4, //决策属性
+				              }
+				            }),
+				            contentType: "application/json;charset=UTF-8",
+				            success: function (data, textStatus, xhr) {
+				            	getstate();
+				                data=eval("("+data+")");
+				                alert(data);
+				            },
+				            error: function() {
+				            	alert("失败");
+				            }
+				        });
 					});
 				}
 		
@@ -395,17 +417,70 @@ function uploadFile() {
           cache: false,  
           contentType: false,  
           processData: false,  
-          success: function (returndata) {  
-          	  console.log(formData);
-              alert(returndata);
-              alert(0);
+          success: function (returndata) {
+          	  var data = returndata;
+          	  // var num = data.indexOf("/");
+          	  // data = 
+          	  localStorage.filename = data;
+              alert(data);
           },  
           error: function (returndata) {  
               alert(returndata);  
-              alert(1);
           }  
      });  
-}  
+}
+function prosess(data) {
+	// $('#myprogress').css('width','0');
+	alert(data);
+	if (data.DATASET_STATE == 2 && data.PREPRO_STATE == 0 && data.ALG_STATE == 0 && data.MODEL_STATE == 0) {
+		$('#myprogress').css('width','25%');
+	}
+	if (data.PREPRO_STATE == 2 && data.ALG_STATE == 0 && data.MODEL_STATE == 0) {
+		$('#myprogress').css('width','50%');
+	}
+	if (data.ALG_STATE == 2 && data.MODEL_STATE == 0) {
+		$('#myprogress').css('width','75%');
+	}
+	if (data.MODEL_STATE == 2) {
+		$('#myprogress').css('width','100%');
+		$(".modal-body > h4").text('完成运算');
+		getResult();
+	}
+
+}
+
+function getResult() {
+	$.ajax({
+		url: 'http://127.0.0.1:5000/result',
+		type: 'GET',
+		success: function(resdata) {
+			var imgUrl = 'http://127.0.0.1:5000/' + resdata ;
+			$('#myresult').append('<img src="'+imgUrl+'" alt="">');
+		},
+		error: function(resdata) {
+			alert(resdata);
+		}
+	});
+}
+
+function getstate() {
+	$.ajax({
+		url: 'http://127.0.0.1:5000/state',
+		type: 'GET',
+		success: function(resdata) {
+			var data1 = eval('(' + resdata + ')');
+			// console.log(data1);
+			// console.log(data1.DATASET_STATE);
+			prosess(data1);
+			if (data1.MODEL_STATE != 2) {
+				setTimeout(getstate,1000);
+			}
+		},
+		error: function(resdata) {
+			alert(resdata);
+		}
+	});
+}
 
 function cellAttributesChanged(graph,  cell, attribute,input){
 	var applyHandler = function(){

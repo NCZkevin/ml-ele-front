@@ -406,6 +406,10 @@ function selectionChanged(graph){
 		
 	}
 }
+//参数设置
+function argSet() {
+	
+}
 
 function uploadFile() {  
      var formData = new FormData($( "#uploadForm" )[0]);  

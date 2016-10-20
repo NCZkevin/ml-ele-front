@@ -411,6 +411,50 @@ function argSet() {
 	
 }
 
+//绑定数据
+/**
+ * Updates the properties panel
+ */
+function selectionChanged(graph)
+{
+	var div = document.getElementById('properties');
+
+	// Forces focusout in IE
+	graph.container.focus();
+
+	// Clears the DIV the non-DOM way
+	div.innerHTML = '';
+
+	// Gets the selection cell
+	var cell = graph.getSelectionCell();
+
+	if (cell == null)
+	{
+		mxUtils.writeln(div, 'Nothing selected.');
+	}
+	else
+	{
+		// Writes the title
+		var center = document.createElement('center');
+		mxUtils.writeln(center, cell.value.nodeName + ' (' + cell.id + ')');
+		div.appendChild(center);
+		mxUtils.br(div);
+
+		// Creates the form from the attributes of the user object
+		var form = new mxForm();
+
+		var attrs = cell.value.attributes;
+		
+		for (var i = 0; i < attrs.length; i++)
+		{
+			createTextField(graph, form, cell, attrs[i]);
+		}
+
+		div.appendChild(form.getTable());
+		mxUtils.br(div);
+	}
+}
+
 function uploadFile() {  
      var formData = new FormData($( "#uploadForm" )[0]);  
      $.ajax({  

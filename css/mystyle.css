@@ -2,10 +2,10 @@
   height: 4em;
 }
 .navbar , .logo{
-  background-color: #007a77 !important;
+  background-color: #01574a !important;
 }
 .box-header a {
-  color: #007a77;
+  color: #01574a;
 }
 /* #graphContainer {
   background: url('./static/src/images/window.gif');

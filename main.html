@@ -13,12 +13,12 @@
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="" name="description" />
         <meta content="" name="author" />
-		
+
 	    <link rel="stylesheet" href="./static/css/bootstrap.min.css">
 	   <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"> -->
-	    <link rel="stylesheet" href="./static/css/font-awesome.min.css">
-	    <link rel="stylesheet" href="./static/css/ionicons.min.css">
+	    <link rel="stylesheet" href="./static/font-awesome-4.7.0/css/font-awesome.min.css">
+	    <link rel="stylesheet" href="./static/ionicons-2.0.1/css/ionicons.min.css">
 	    <link rel="stylesheet" href="./static/css/AdminLTE.min.css">
 	    <link rel="stylesheet" href="./static/css/skin-blue.min.css">
 	    <link rel="stylesheet" href="./static/js/plugins/pace/pace.min.css">
@@ -27,17 +27,17 @@
 	    mxBasePath = './static/src';
 	    </script>
 	    <script src="./static/js/mxClient.js"></script>
-	    <script src="./js/tmx.js"></script>	    
-	    <script src="./js/ArrayList.js"></script>	    
+	    <script src="./js/tmx.js"></script>
+	    <script src="./js/ArrayList.js"></script>
 		<script type="text/javascript">
-		
-					
+
+
 		</script>
-			
+
 
 	</head>
     <!-- END HEAD -->
-	
+
 	<body class="hold-transition skin-blue sidebar-mini" onload="main(document.getElementById('graphContainer'),document.getElementById('tbContainer'))">
 		<!-- BEGIN HEADER -->
 		<header class="main-header" style="height:300px;">
@@ -46,7 +46,7 @@
                 <span class="logo-mini" style="margin-top:15px;"><img src="./static/img/logo_sm.png" alt="Logo" class="img-responsive center-block"></span>
                 <!-- logo for regular state and mobile devices -->
                 <div class="container logo-lg" style="margin-top:15px;">
-                    <div class="pull-left image"><img src="./static/img/tellhow.png" alt="Logo" class="img-responsive"></div>                    
+                    <div class="pull-left image"><img src="./static/img/tellhow.png" alt="Logo" class="img-responsive"></div>
                 </div>
             </div>
             <!-- Header Navbar -->
@@ -55,10 +55,10 @@
                 <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button" style="margin-top:15px;">
                     <span class="sr-only" >Toggle navigation</span>
                 </a>
-				<h1 style="color:white;float:left;margin-top:20px;font-family:Microsoft YaHei;">泰豪电力大数据云智能通用支撑平台</h1>	
+				<h1 style="color:white;float:left;margin-top:20px;font-family:Microsoft YaHei;">泰豪电力大数据云智能通用支撑平台</h1>
                 <!-- Navbar Right Menu -->
                 <div class="navbar-custom-menu">
-				
+
                     <ul class="nav navbar-nav">
                         <!-- User Account Menu -->
                         <li class="dropdown user user-menu">
@@ -70,18 +70,18 @@
                             </a>
                         </li>
                     </ul>
-					
+
                 </div>
 				<div class="pull-right image"><img src="./static/img/bg_GS.jpg" alt="Logo" class="img-responsive"></div>
             </nav>
         </header>
         <!-- END HEADER -->
-		
+
 		<!-- BEGIN HEADER & CONTENT DIVIDER -->
         <div class="clearfix"> </div>
         <!-- END HEADER & CONTENT DIVIDER -->
-		
-		<!-- BEGIN CONTAINER -->		
+
+		<!-- BEGIN CONTAINER -->
         <div class="main-sidebar" style="background: #ecf0f5;" style="height:900px;">
             <!-- BEGIN SIDEBAR -->
             <div class="page-sidebar-wrapper" style="margin-top:45px;background-color: #03604e;">
@@ -104,7 +104,7 @@
                                 <span class="arrow"></span>
                             </a>
                             <ul class="treeview-menu">
-                                <li class="nav-item">									
+                                <li class="nav-item">
                                     <a class="nav-link ">
                                         <i class="fa fa-file-text-o"></i>
                                         <span class="title" id="TXT"  style="color:white;font-family:Microsoft YaHei;font-size:18px;">TXT</span>
@@ -143,7 +143,7 @@
                                         <span class="arrow"></span>
                                     </a>
                                     <ul class="treeview-menu">
-                                        
+
                                         <li class="nav-item">
                                             <a  class="nav-link">
                                                 <i class="fa fa-circle-o"></i> <span class="title" id="meanImpute" style="color:white;font-family:Microsoft YaHei;font-size:16px;">平均值替代</span></a>
@@ -160,26 +160,26 @@
                                             <a  class="nav-link">
                                                 <i class="fa fa-circle-o"></i> <span class="title" id="deleteImpute" style="color:white;font-family:Microsoft YaHei;font-size:16px;">删除缺失值</span></a>
                                         </li>
-                                        
+
                                     </ul>
                                 </li>
-								
+
 								<li class="nav-item">
                                     <a  class="nav-link nav-toggle">
                                         <i class="fa fa-circle-o"></i> <span style="color:white;font-family:Microsoft YaHei;font-size:18px;">归一化处理</span>
                                         <span class="arrow"></span>
                                     </a>
-                                    
+
                                 </li>
-								
+
 								<li class="nav-item">
                                     <a  class="nav-link nav-toggle">
                                         <i class="fa fa-circle-o"></i> <span style="color:white;font-family:Microsoft YaHei;font-size:18px;">离散化处理</span>
                                         <span class="arrow"></span>
                                     </a>
-                                    
+
                                 </li>
-                                    
+
                             </ul>
                         </li>
 						<li class="treeview">
@@ -195,7 +195,7 @@
                                         <span class="arrow"></span>
                                     </a>
                                     <ul class="treeview-menu">
-                                        
+
                                         <li class="nav-item">
                                             <a  class="nav-link">
                                                 <i class="fa fa-circle-o"></i> <span class="title" id="ID3" style="color:white;font-family:Microsoft YaHei;font-size:16px;">ID3</span></a>
@@ -204,7 +204,7 @@
                                             <a  class="nav-link">
                                                 <i class="fa fa-circle-o"></i> <span class="title" id="LR" style="color:white;font-family:Microsoft YaHei;font-size:16px;">线性回归</span></a>
                                         </li>
-                                        
+
                                     </ul>
                                 </li>
 								<li class="nav-item">
@@ -213,16 +213,16 @@
                                         <span class="arrow"></span>
                                     </a>
                                     <ul class="treeview-menu">
-                                        
+
                                         <li class="nav-item">
                                             <a  class="nav-link">
                                                 <i class="fa fa-circle-o"></i> <span class="title" id="KMeans" style="color:white;font-family:Microsoft YaHei;font-size:16px;">K均值</span></a>
                                         </li>
-                                        
+
                                     </ul>
                                 </li>
-								
-                                
+
+
                             </ul>
                         </li>
 						<li class="treeview">
@@ -235,14 +235,14 @@
                                 <li class="nav-item">
                                     <a  class="nav-link nav-toggle">
                                         <i class="fa fa-circle-o"></i> <span class="title" id="X-Validation" style="color:white;font-family:Microsoft YaHei;font-size:16px;">交叉验证</span>
-                                       
+
                                     </a>
-                                    
+
                                 </li>
-                                    
+
                             </ul>
                         </li>
-						
+
 						<li class="treeview">
                             <a  class="nav-link nav-toggle">
                                 <i class="fa fa-server"></i>
@@ -252,29 +252,29 @@
                             <ul class="treeview-menu">
                                 <li class="nav-item">
                                     <a  class="nav-link nav-toggle">
-                                        <i class="fa fa-circle-o"></i> <span class="title" id="selectNode" style="color:white;font-family:Microsoft YaHei;font-size:18px;">选择</span>                                     
-                                    </a>                                    
+                                        <i class="fa fa-circle-o"></i> <span class="title" id="selectNode" style="color:white;font-family:Microsoft YaHei;font-size:18px;">选择</span>
+                                    </a>
                                 </li>
                                 <li class="nav-item">
                                     <a  class="nav-link nav-toggle">
-                                        <i class="fa fa-circle-o"></i> <span class="title" id="rollbackNode" style="color:white;font-family:Microsoft YaHei;font-size:18px;">回退</span>                                     
-                                    </a>                                    
-                                </li>    
+                                        <i class="fa fa-circle-o"></i> <span class="title" id="rollbackNode" style="color:white;font-family:Microsoft YaHei;font-size:18px;">回退</span>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
-						
+
 					</ul>
 					</br>
 					</br>
 					</br>
 					<div class="pull-right image"><img src="./static/img/sidebar_bg.png" alt="Logo" class="img-responsive"></div>
-					
+
 				</div>
 				<!-- END SIDEBAR MENU -->
 			</div>
 		</div>
 			<!-- END SIDEBAR -->
-			
+
 			<!-- BEGIN CONTENT -->
 			<div class="content-wrapper" >
 				<!-- BEGIN CONTENT BODY -->
@@ -297,11 +297,11 @@
 										<i class="icon-social-dribbble font-purple-soft"></i>
 										<span class="caption-subject font-purple-soft bold uppercase">流程构造区</span>
 									</div>
-										
+
 								</div>
 								<div class="box-body">
 									<div id="graphContainer" class="scroller" style="height:400px" data-rail-visible="1" data-rail-color="yellow" data-handle-color="#a1b2bd">
-										
+
 									</div>
 								</div>
 							</div>
@@ -313,20 +313,20 @@
 											<i class="icon-social-dribbble font-purple-soft"></i>
 											<span class="caption-subject font-purple-soft bold uppercase">相关参数设置区</span>
 										</div>
-										
+
 									</div>
 									<div  class="box-body">
 										<div id="properties" class="scroller" style="height:400px" data-rail-visible="1" data-rail-color="yellow" data-handle-color="#a1b2bd">
-											
-											
+
+
 										</div>
-										
+
 									</div>
 								</div>
-						
-						</div>						
+
+						</div>
 					</div>
-					
+
 					<div class="row">
                         <div class="err-shu col-md-12">
                             <div class="box box-success">
@@ -353,7 +353,7 @@
                             <!-- /.box -->
                         </div>
 						</div>
-					
+
 				</div>
 			<!-- 模态框 -->
 			<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="proModal">
@@ -370,11 +370,11 @@
 		            </div>
 					<h4>数据处理中</h4>
 					<div id="myresult">
-						
+
 					</div>
 			      </div>
 			      <div class="modal-footer">
-					
+
 			        <button type="button" class="btn btn-default" style="float:left;">打印</button>
 			        <button type="button" class="btn btn-default" style="float:left;">下载</button>
 			        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -382,12 +382,12 @@
 			    </div>
 			  </div>
 			</div>
-			
+
 			<!-- 数据导入模块编辑弹窗 -->
 			<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="editModal">
 				<div class="modal-dialog modal-lg">
 					<div class="modal-content">
-						<div class="modal-header">					
+						<div class="modal-header">
 							<h4 class="modal-title">编辑</h4>
 						</div>
 						<div class="modal-body">
@@ -399,11 +399,11 @@
 													<th width="30%" align="center"><input type="checkbox" name="inputAttr" id="inputAttr" onclick="selectAll()"/></th>
 													<th width="30%" align="center">属性名</th>
 													<th width="40%" align="center">输入/输出</th>
-													
+
 											</tr>
 										</thead>
 										<tbody >
-											
+
 										</tbody>
 									</table>
 								</div>
@@ -411,12 +411,12 @@
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn blue" onclick="attrsConfirmFn()">应用</button>
-							<button type="button" class="btn default" data-dismiss="modal">关闭</button>					
+							<button type="button" class="btn default" data-dismiss="modal">关闭</button>
 						</div>
 					</div>
 				</div>
 			</div>
-			
+
 			<!-- 模型信息查看 -->
 			<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="modelModal">
 			  <div class="modal-dialog modal-lg">
@@ -425,13 +425,13 @@
 			        <h4 class="modal-title" id="myModalLabel">模型信息</h4>
 			      </div>
 			      <div class="modal-body">
-			       
+
 					<div id="modelInfo">
-						
+
 					</div>
 			      </div>
 			      <div class="modal-footer">
-					
+
 			        <button type="button" class="btn btn-default" style="float:left;">打印</button>
 			        <button type="button" class="btn btn-default" style="float:left;">下载</button>
 			        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -439,19 +439,19 @@
 			    </div>
 			  </div>
 			</div>
-			
+
 				<!-- END CONTENT BODY -->
 			</div>
 				<!-- END CONTENT -->
-		
+
 		<!-- END CONTAINER -->
-		
-		
-		
-		
+
+
+
+
 		<!--[if lt IE 9]>
 		<script src="../assets/global/plugins/respond.min.js"></script>
-		<script src="../assets/global/plugins/excanvas.min.js"></script> 
+		<script src="../assets/global/plugins/excanvas.min.js"></script>
 		<![endif]-->
         <!-- BEGIN CORE PLUGINS -->
 		<script src="./static/js/plugins/jQuery/jQuery-2.2.0.min.js"></script>
@@ -459,11 +459,11 @@
         <script src="./static/js/plugins/AdminLTE/app.min.js"></script>
         <script src="./static/js/plugins/pace/pace.min.js"></script>
         <script src="./static/js/copilot.js"></script>
-<!--         <script src="./js/taihao.js"></script>    
- -->		
-		  
+<!--         <script src="./js/taihao.js"></script>
+ -->
+
 	</body>
-	
-	
-	
+
+
+
 </html>

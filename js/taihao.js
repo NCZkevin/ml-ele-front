@@ -7,7 +7,7 @@ var parent = graph.getDefaultParent();
 mxEvent.disableContextMenu(container);
 graph.setConnectable(true);
 graph.setCellsEditable(false);
-graph.setMultigraph(false);      
+graph.setMultigraph(false);
 graph.setPanning(true);
 graph.setTooltips(true);
 
@@ -16,33 +16,33 @@ graph.setEnabled(true);
 // 去锯齿效果
 mxRectangleShape.prototype.crisp = true;
 // 开启拖拽选择
-new mxRubberband(graph);    
+new mxRubberband(graph);
 graph.panningHandler.autoExpand = true;
-graph.panningHandler.factoryMethod = function(menu, cell, evt)  
-    {  
+graph.panningHandler.factoryMethod = function(menu, cell, evt)
+    {
         menu.addItem('删除', null, function(){
         return function(evt){
             var cells = graph.getSelectionCells();
 
             for(var i=0; i<cells.length; i++){
-                var x = randint(0, 1200 - cells[i].geometry.width);     
-                var y = randint(0, 600 - cells[i].geometry.height);     
+                var x = randint(0, 1200 - cells[i].geometry.width);
+                var y = randint(0, 600 - cells[i].geometry.height);
             }
 
-            graph.moveCells([cells[i]], x , y);                     
+            graph.moveCells([cells[i]], x , y);
         };
-    });  
-          
-        menu.addItem('编辑', null, function()  
-        {  
-            alert('删除');  
-        });  
-        menu.addItem('执行', null, function()  
-        {  
-            alert('执行');  
-        });  
+    });
 
-    };  
+        menu.addItem('编辑', null, function()
+        {
+            alert('删除');
+        });
+        menu.addItem('执行', null, function()
+        {
+            alert('执行');
+        });
+
+    };
 
 // v1 = graph.insertVertex(parent, null, "text1", 100, 200, 50, 50);
 // graph.insertVertex(parent, null, "text2", 150, 100, 50, 50);
@@ -55,51 +55,51 @@ graph.panningHandler.factoryMethod = function(menu, cell, evt)
 var createButton, buttons, createVertex, randint;
 
 // 创建按钮
-createButton = function(label, fun){    
-    document.getElementById("buttonlist").appendChild(mxUtils.button(label, fun));   
+createButton = function(label, fun){
+    document.getElementById("buttonlist").appendChild(mxUtils.button(label, fun));
 };
 
 // 随机范围整数
 randint = function(n,m){
-    var c = m-n+1;  
+    var c = m-n+1;
     return Math.floor(Math.random() * c + n);
-};      
+};
 
 // 按钮列表
 buttons = [
     {
         label : "选择所有",
         fun : function(graph){
-            return function(evt){   
-                graph.selectAll();  
+            return function(evt){
+                graph.selectAll();
             };
         }
     },
     {
         label : "选择一个",
         fun : function(graph){
-            return function(evt){   
-                graph.selectCell(); 
+            return function(evt){
+                graph.selectCell();
             };
         }
     },
     {
-        label : "取消选择", 
+        label : "取消选择",
         fun : function(graph){
             return function(evt){
-                var cells = graph.getSelectionCells();  
-                graph.removeSelectionCells(cells);                          
+                var cells = graph.getSelectionCells();
+                graph.removeSelectionCells(cells);
             };
         }
     },
     {
-        label : "随机添加", 
+        label : "随机添加",
         fun : function(graph){
             return function(evt){
                 var randColor = function(){
-                    return "rgb("+randint(0,255)+","+randint(0,255)+","+randint(0,255)+")"; 
+                    return "rgb("+randint(0,255)+","+randint(0,255)+","+randint(0,255)+")";
                 };
-                
+
                 var style = "fillColor=" + randColor() + "; fontColor=" + randColor();
 
                 var width = randint(50, 100);
@@ -108,7 +108,7 @@ buttons = [
                 var y = randint(0, 600 - height);
 
                 graph.insertVertex(graph.getDefaultParent(), null, "随机添加", x, y, width, height, style);
-            };  
+            };
         }
     },
     {
@@ -169,11 +169,11 @@ buttons = [
                 var cells = graph.getSelectionCells();
 
                 for(var i=0; i<cells.length; i++){
-                    var x = randint(0, 1200 - cells[i].geometry.width);     
-                    var y = randint(0, 600 - cells[i].geometry.height);     
+                    var x = randint(0, 1200 - cells[i].geometry.width);
+                    var y = randint(0, 600 - cells[i].geometry.height);
                 }
 
-                graph.moveCells([cells[i]], x , y);                     
+                graph.moveCells([cells[i]], x , y);
             };
         }
     }
@@ -181,8 +181,8 @@ buttons = [
 ];
 
 for(var i=0; i<buttons.length; i++){
-                createButton( buttons[i].label, buttons[i].fun(graph) );    
-            } 
+                createButton( buttons[i].label, buttons[i].fun(graph) );
+            }
 
 
 $('#sidebar li').click(function() {
@@ -191,9 +191,9 @@ $('#sidebar li').click(function() {
     // console.log(name);
     if (name != 'undefined') {
         var randColor = function(){
-            return "rgb("+randint(0,255)+","+randint(0,255)+","+randint(0,255)+")"; 
+            return "rgb("+randint(0,255)+","+randint(0,255)+","+randint(0,255)+")";
         };
-        
+
         var style = "fillColor=" + randColor() + "; fontColor=" + randColor();
 
         var width = randint(50, 100);
@@ -203,7 +203,7 @@ $('#sidebar li').click(function() {
         graph.insertVertex(graph.getDefaultParent(), null, name,x, y, 80, 80, style);
     }
 
-});    
+});
 
 //ajax发送数据
 $.ajax({
@@ -217,55 +217,55 @@ $.ajax({
 
 
    // (function(){
-        
+
    //      var createButton, buttons, createVertex, randint;
 
    //      // 创建按钮
-   //      createButton = function(label, fun){    
-   //          document.getElementById("buttonlist").appendChild(mxUtils.button(label, fun));   
+   //      createButton = function(label, fun){
+   //          document.getElementById("buttonlist").appendChild(mxUtils.button(label, fun));
    //      };
 
    //      // 随机范围整数
    //      randint = function(n,m){
-   //          var c = m-n+1;  
+   //          var c = m-n+1;
    //          return Math.floor(Math.random() * c + n);
-   //      };      
+   //      };
 
    //      // 按钮列表
    //      buttons = [
    //          {
    //              label : "选择所有",
    //              fun : function(graph){
-   //                  return function(evt){   
-   //                      graph.selectAll();  
+   //                  return function(evt){
+   //                      graph.selectAll();
    //                  };
    //              }
    //          },
    //          {
    //              label : "选择一个",
    //              fun : function(graph){
-   //                  return function(evt){   
-   //                      graph.selectCell(); 
+   //                  return function(evt){
+   //                      graph.selectCell();
    //                  };
    //              }
    //          },
    //          {
-   //              label : "取消选择", 
+   //              label : "取消选择",
    //              fun : function(graph){
    //                  return function(evt){
-   //                      var cells = graph.getSelectionCells();  
-   //                      graph.removeSelectionCells(cells);                          
+   //                      var cells = graph.getSelectionCells();
+   //                      graph.removeSelectionCells(cells);
    //                  };
    //              }
    //          },
    //          {
-   //              label : "随机添加", 
+   //              label : "随机添加",
    //              fun : function(graph){
    //                  return function(evt){
    //                      var randColor = function(){
-   //                          return "rgb("+randint(0,255)+","+randint(0,255)+","+randint(0,255)+")"; 
+   //                          return "rgb("+randint(0,255)+","+randint(0,255)+","+randint(0,255)+")";
    //                      };
-                        
+
    //                      var style = "fillColor=" + randColor() + "; fontColor=" + randColor();
 
    //                      var width = randint(50, 100);
@@ -274,7 +274,7 @@ $.ajax({
    //                      var y = randint(0, 600 - height);
 
    //                      graph.insertVertex(graph.getDefaultParent(), null, "随机添加", x, y, width, height, style);
-   //                  };  
+   //                  };
    //              }
    //          },
    //          {
@@ -335,11 +335,11 @@ $.ajax({
    //                      var cells = graph.getSelectionCells();
 
    //                      for(var i=0; i<cells.length; i++){
-   //                          var x = randint(0, 1200 - cells[i].geometry.width);     
-   //                          var y = randint(0, 600 - cells[i].geometry.height);     
+   //                          var x = randint(0, 1200 - cells[i].geometry.width);
+   //                          var y = randint(0, 600 - cells[i].geometry.height);
    //                      }
 
-   //                      graph.moveCells([cells[i]], x , y);                     
+   //                      graph.moveCells([cells[i]], x , y);
    //                  };
    //              }
    //          }
@@ -353,37 +353,37 @@ $.ajax({
    //          var parent = graph.getDefaultParent();
 
    //          mxEvent.disableContextMenu(document.body);
-                
+
    //          // 去锯齿效果
    //          mxRectangleShape.prototype.crisp = true;
    //          // 开启拖拽选择
-   //          new mxRubberband(graph);    
+   //          new mxRubberband(graph);
    //          graph.panningHandler.autoExpand = true;
-   //          graph.panningHandler.factoryMethod = function(menu, cell, evt)  
-   //              {  
+   //          graph.panningHandler.factoryMethod = function(menu, cell, evt)
+   //              {
    //                  menu.addItem('编辑', null, function(graph){
    //                  return function(evt){
    //                      var cells = graph.getSelectionCells();
 
    //                      for(var i=0; i<cells.length; i++){
-   //                          var x = randint(0, 1200 - cells[i].geometry.width);     
-   //                          var y = randint(0, 600 - cells[i].geometry.height);     
+   //                          var x = randint(0, 1200 - cells[i].geometry.width);
+   //                          var y = randint(0, 600 - cells[i].geometry.height);
    //                      }
 
-   //                      graph.moveCells([cells[i]], x , y);                     
+   //                      graph.moveCells([cells[i]], x , y);
    //                  };
-   //              });  
-                      
-   //                  menu.addItem('删除', null, function()  
-   //                  {  
-   //                      alert('删除');  
-   //                  });  
-   //                  menu.addItem('执行', null, function()  
-   //                  {  
-   //                      alert('执行');  
-   //                  });  
- 
-   //              };  
+   //              });
+
+   //                  menu.addItem('删除', null, function()
+   //                  {
+   //                      alert('删除');
+   //                  });
+   //                  menu.addItem('执行', null, function()
+   //                  {
+   //                      alert('执行');
+   //                  });
+
+   //              };
 
    //          v1 = graph.insertVertex(parent, null, "text1", 100, 200, 50, 50);
    //          graph.insertVertex(parent, null, "text2", 150, 100, 50, 50);
@@ -395,8 +395,8 @@ $.ajax({
    //      };
 
    //      (function(){
-   //          graph = createVertex(); 
-            
+   //          graph = createVertex();
+
    //          // $('#txt').click(function() {
    //          //     graph.insertVertex(graph.getDefaultParent(), null, "txt", 150, 100, 100, 100);
    //          // });
@@ -405,19 +405,19 @@ $.ajax({
    //          //     // alert(name);
    //          //     console.log(name);
    //          //     graph.insertVertex(graph.getDefaultParent(), null, name, 150, 100, 100, 100);
-   //          // });            
+   //          // });
    //          for(var i=0; i<buttons.length; i++){
-   //              createButton( buttons[i].label, buttons[i].fun(graph) );    
-   //          } 
-   //      })(); 
+   //              createButton( buttons[i].label, buttons[i].fun(graph) );
+   //          }
+   //      })();
 
-   //          graph = createVertex(); 
+   //          graph = createVertex();
    //          $('#sidebar li').click(function() {
    //              name = $(this).data('id');
    //              alert(name);
    //              console.log(name);
    //              graph.insertVertex(graph.getDefaultParent(), null, name, 150, 100, 100, 100);
-   //          });   
+   //          });
    //  })();
 
 // var container = document.getElementById("graphContainer");
@@ -759,7 +759,7 @@ $.ajax({
 //                 {
 //                     div.innerHTML = uploadFileDiv;
 
-//                     //var attrs = cell.value.attributes;	
+//                     //var attrs = cell.value.attributes;
 //                     //for (var i = 0; i < attrs.length; i++){
 //                     //var input = document.getElementById(attrs[i].nodeName);
 //                     //cellAttributesChanged(graph, cell, attrs[i], input);//输入类型的属性值变化

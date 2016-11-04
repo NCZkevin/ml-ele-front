@@ -23,6 +23,7 @@
 	    <link rel="stylesheet" href="./static/css/skin-blue.min.css">
 	    <link rel="stylesheet" href="./static/js/plugins/pace/pace.min.css">
 	    <link rel="stylesheet"  href="css/mystyle.css">
+			<script src="./static/js/plugins/jQuery/jQuery-2.2.0.min.js"></script>
 	    <script type="text/javascript">
 	    mxBasePath = './static/src';
 	    </script>
@@ -31,13 +32,11 @@
 	    <script src="./js/ArrayList.js"></script>
 		<script type="text/javascript">
 
-
 		</script>
 
 
 	</head>
     <!-- END HEAD -->
-
 	<body class="hold-transition skin-blue sidebar-mini" onload="main(document.getElementById('graphContainer'),document.getElementById('tbContainer'))">
 		<!-- BEGIN HEADER -->
 		<header class="main-header" style="height:300px;">
@@ -278,8 +277,8 @@
 					   <div class="col-md-12">
                             <div class="box">
                                 <div class="box-body" id="buttonlist">
-                                    <button id="addnew" class="btn btn-default">新建</button>
-                                    <button id="open" class="btn btn-default">打开</button>
+                                    <button id="addnew" class="btn btn-default" onclick="window.open('#')">新建</button>
+                                    <button id="open" class="btn btn-default" data-toggle="modal" data-target="#fileModal">打开</button>
                                     <button id="save" class="btn btn-default">保存</button>
                                     <button id="publish" class="btn btn-default">执行</button>
                                 </div>
@@ -434,7 +433,37 @@
 			    </div>
 			  </div>
 			</div>
+			<!-- 打开文件 -->
+			<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="fileModal">
+			  <div class="modal-dialog modal-sm">
+			    <div class="modal-content">
+		           <div class="modal-header">
+								 <h4>打开文件</h4>
+			      </div>
+			      <div class="modal-body">
+							<form id= "uploadForm">
+								<div class="col-md-offset-1 col-md-11 form-group">
+									<!-- <label for="exampleInputFile">文件上传</label> -->
+									<!-- <input type="text" name="fileName" id="fileName" style="width:150px;"> -->
+									<input type="file"  name="file" id="xmlfile"  onchange="showFilename(this.value)">
+									<!-- <input type="text" id="ext" name="ext" hidden="true" value="txt"><br/> -->
+									<p>
+										Supported format is .XML files saved from this software
+									</p>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<input class="btn btn-primary col-md-12" type="button" onclick="readFile()" value="open" />
+									</div>
+								</div>
+							</form>
 
+			      </div>
+			      <div class="modal-footer">
+			      </div>
+			    </div>
+			  </div>
+			</div>
 				<!-- END CONTENT BODY -->
 			</div>
 				<!-- END CONTENT -->
@@ -449,7 +478,6 @@
 		<script src="../assets/global/plugins/excanvas.min.js"></script>
 		<![endif]-->
         <!-- BEGIN CORE PLUGINS -->
-		<script src="./static/js/plugins/jQuery/jQuery-2.2.0.min.js"></script>
         <script src="./static/js/plugins/bootstrap/bootstrap.min.js"></script>
         <script src="./static/js/plugins/AdminLTE/app.min.js"></script>
         <script src="./static/js/plugins/pace/pace.min.js"></script>
